@@ -1,26 +1,27 @@
 #!/bin/bash
 
-# Check if the CFILE variable is set
+# Check if CFILE variable is set
 if [ -z "$CFILE" ]; then
-    echo "Please set the CFILE variable to the name of the C source file."
-    exit 1
+  echo "Error: The CFILE variable is not set. Please set it to the name of your C source file."
+  exit 1
 fi
 
-# Check if the C file exists
+# Check if the C source file exists
 if [ ! -f "$CFILE" ]; then
-    echo "C file '$CFILE' not found."
-    exit 1
+  echo "Error: The specified C source file '$CFILE' does not exist in the current directory."
+  exit 1
 fi
 
-# Generate the output file name with .s extension
+# Generate the output assembly file name
 ASMFILE="${CFILE%.c}.s"
 
-# Compile the C code to assembly using GCC with Intel syntax
+# Compile the C source file to assembly with Intel syntax
 gcc -S -masm=intel "$CFILE" -o "$ASMFILE"
 
+# Check if compilation was successful
 if [ $? -eq 0 ]; then
-    echo "Assembly code generated and saved as '$ASMFILE'."
+  echo "Assembly code generated and saved as '$ASMFILE'."
 else
-    echo "Error generating assembly code."
+  echo "Error: Failed to generate assembly code."
 fi
 
