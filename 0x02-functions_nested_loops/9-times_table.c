@@ -1,6 +1,12 @@
 #include "main.h"
 #include <stdio.h>
 
+/**
+ * times_table - prints the multiplication table for 0 to 9
+ *
+ * Return: This function does not return a value (void).
+ */
+
 void times_table(void)
 {
 	int i, j, result;
@@ -15,7 +21,7 @@ void times_table(void)
 			else
 			{
 				printf("%2d", result);
-				if ( j != 9)
+				if (j != 9)
 					printf(", ");
 			}
 		}
