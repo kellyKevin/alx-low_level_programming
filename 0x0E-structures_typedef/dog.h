@@ -7,7 +7,8 @@
  * @age: the age of the dog
  * @owner: the owner of the dog
  *
- * description: the attributes of the dog
+ * description: this structure
+ * represents the attributes of a dog
  */
 
 struct dog
