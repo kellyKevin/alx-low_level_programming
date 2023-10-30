@@ -1,8 +1,3 @@
-/**
- * File: 100-elf_header.c
- * Auth: Brennan D Baraban
- */
-
 #include <elf.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -43,4 +38,38 @@ void check_elf(unsigned char *e_ident)
 			exit(98);
 		}
 	}
+}
+
+/**
+ * print_magic - prints the magic numbers of an ELF header
+ * @e_ident: a pointer to an array containing the ELF magic numbers
+ *
+ * Description: magic numbers are separated by spaces
+ */
+
+void print_magic(unsigned char *e_ident)
+{
+	int index;
+
+	printf("	Magic:	");
+
+	for (index = 0; index < EI_NIDENT; index++)
+	{
+		printf("%02x", e_ident[index]);
+
+		if (index == EI_NIDENT -1)
+			printf("\n");
+		else
+			printf("	");
+	}
+}
+
+/**
+ * print_class - prints the class of an ELF header
+ * @e_ident: a pointer to an array containing the ELF class
+ */
+void print_class(unsigned char *e_ident)
+{
+	printf(" class:
+			switch (e_ident[EL_CLASS])
 }
